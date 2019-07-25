@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
 Name     : poppler
-Version  : 0.78.0
-Release  : 52
-URL      : https://poppler.freedesktop.org/poppler-0.78.0.tar.xz
-Source0  : https://poppler.freedesktop.org/poppler-0.78.0.tar.xz
-Source99 : https://poppler.freedesktop.org/poppler-0.78.0.tar.xz.sig
+Version  : 0.79.0
+Release  : 53
+URL      : https://poppler.freedesktop.org/poppler-0.79.0.tar.xz
+Source0  : https://poppler.freedesktop.org/poppler-0.79.0.tar.xz
+Source99 : https://poppler.freedesktop.org/poppler-0.79.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0
@@ -42,20 +42,10 @@ BuildRequires : tiff-dev
 BuildRequires : zlib-dev
 
 %description
-This is poppler, a PDF rendering library.
-Poppler is a fork of the xpdf PDF viewer developed by Derek Noonburg
-of Glyph and Cog, LLC.  The purpose of forking xpdf is twofold.
-First, we want to provide PDF rendering functionality as a shared
-library, to centralize the maintenance effort.  Today a number of
-applications incorporate the xpdf code base, and whenever a security
-issue is discovered, all these applications exchange patches and put
-out new releases.  In turn, all distributions must package and release
-new version of these xpdf based viewers.  It's safe to say that
-there's a lot of duplicated effort with the current situation.  Even if
-poppler in the short term introduces yet another xpdf derived code
-base to the world, we hope that over time these applications will
-adopt poppler.  After all, we only need one application to use poppler
-to break even.
+Poppler, a PDF rendering library
+================================
+This is Poppler, a library for rendering PDF files, and examining or
+modifying their structure.  Poppler originally came from the XPDF
 
 %package bin
 Summary: bin components for the poppler package.
@@ -123,14 +113,14 @@ man components for the poppler package.
 
 
 %prep
-%setup -q -n poppler-0.78.0
+%setup -q -n poppler-0.79.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1561646892
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1564017915
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -161,7 +151,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1561646892
+export SOURCE_DATE_EPOCH=1564017915
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp COPYING %{buildroot}/usr/share/package-licenses/poppler/COPYING
@@ -503,10 +493,8 @@ popd
 /usr/include/poppler/splash/SplashXPath.h
 /usr/include/poppler/splash/SplashXPathScanner.h
 /usr/lib64/haswell/libpoppler-qt5.so.1
-/usr/lib64/haswell/libpoppler-qt5.so.1.19.0
 /usr/lib64/haswell/libpoppler.so
 /usr/lib64/libpoppler-qt5.so.1
-/usr/lib64/libpoppler-qt5.so.1.19.0
 /usr/lib64/libpoppler.so
 /usr/lib64/pkgconfig/poppler-splash.pc
 /usr/lib64/pkgconfig/poppler.pc
@@ -514,19 +502,19 @@ popd
 %files lib
 %defattr(-,root,root,-)
 %exclude /usr/lib64/haswell/libpoppler-qt5.so.1
-%exclude /usr/lib64/haswell/libpoppler-qt5.so.1.19.0
 %exclude /usr/lib64/libpoppler-qt5.so.1
-%exclude /usr/lib64/libpoppler-qt5.so.1.19.0
 /usr/lib64/haswell/libpoppler-cpp.so.0
 /usr/lib64/haswell/libpoppler-cpp.so.0.7.0
 /usr/lib64/haswell/libpoppler-glib.so.8
 /usr/lib64/haswell/libpoppler-glib.so.8.13.0
+/usr/lib64/haswell/libpoppler-qt5.so.1.20.0
 /usr/lib64/haswell/libpoppler.so.89
 /usr/lib64/haswell/libpoppler.so.89.0.0
 /usr/lib64/libpoppler-cpp.so.0
 /usr/lib64/libpoppler-cpp.so.0.7.0
 /usr/lib64/libpoppler-glib.so.8
 /usr/lib64/libpoppler-glib.so.8.13.0
+/usr/lib64/libpoppler-qt5.so.1.20.0
 /usr/lib64/libpoppler.so.89
 /usr/lib64/libpoppler.so.89.0.0
 

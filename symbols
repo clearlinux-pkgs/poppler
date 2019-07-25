@@ -812,6 +812,13 @@ libpoppler-qt5.so.1:_ZN7Poppler13BaseConverterC2ERNS_20BaseConverterPrivateE
 libpoppler-qt5.so.1:_ZN7Poppler13BaseConverterD0Ev
 libpoppler-qt5.so.1:_ZN7Poppler13BaseConverterD1Ev
 libpoppler-qt5.so.1:_ZN7Poppler13BaseConverterD2Ev
+libpoppler-qt5.so.1:_ZN7Poppler13FormFieldIconC1EPNS_17FormFieldIconDataE
+libpoppler-qt5.so.1:_ZN7Poppler13FormFieldIconC1ERKS0_
+libpoppler-qt5.so.1:_ZN7Poppler13FormFieldIconC2EPNS_17FormFieldIconDataE
+libpoppler-qt5.so.1:_ZN7Poppler13FormFieldIconC2ERKS0_
+libpoppler-qt5.so.1:_ZN7Poppler13FormFieldIconD1Ev
+libpoppler-qt5.so.1:_ZN7Poppler13FormFieldIconD2Ev
+libpoppler-qt5.so.1:_ZN7Poppler13FormFieldIconaSERKS0_
 libpoppler-qt5.so.1:_ZN7Poppler13FormFieldText11setFontSizeEi
 libpoppler-qt5.so.1:_ZN7Poppler13FormFieldText7setTextERK7QString
 libpoppler-qt5.so.1:_ZN7Poppler13FormFieldTextC1EPNS_12DocumentDataEP4PageP14FormWidgetText
@@ -929,6 +936,7 @@ libpoppler-qt5.so.1:_ZN7Poppler15CertificateInfoC2ERKS0_
 libpoppler-qt5.so.1:_ZN7Poppler15CertificateInfoD1Ev
 libpoppler-qt5.so.1:_ZN7Poppler15CertificateInfoD2Ev
 libpoppler-qt5.so.1:_ZN7Poppler15CertificateInfoaSERKS0_
+libpoppler-qt5.so.1:_ZN7Poppler15FormFieldButton7setIconERKNS_13FormFieldIconE
 libpoppler-qt5.so.1:_ZN7Poppler15FormFieldButton8setStateEb
 libpoppler-qt5.so.1:_ZN7Poppler15FormFieldButtonC1EPNS_12DocumentDataEP4PageP16FormWidgetButton
 libpoppler-qt5.so.1:_ZN7Poppler15FormFieldButtonC2EPNS_12DocumentDataEP4PageP16FormWidgetButton
@@ -1009,6 +1017,7 @@ libpoppler-qt5.so.1:_ZN7Poppler16WidgetAnnotationD0Ev
 libpoppler-qt5.so.1:_ZN7Poppler16WidgetAnnotationD1Ev
 libpoppler-qt5.so.1:_ZN7Poppler16WidgetAnnotationD2Ev
 libpoppler-qt5.so.1:_ZN7Poppler16unicodeToQStringEPKji
+libpoppler-qt5.so.1:_ZN7Poppler17FormFieldIconData7getDataERKNS_13FormFieldIconE
 libpoppler-qt5.so.1:_ZN7Poppler18FormFieldSignatureC1EPNS_12DocumentDataEP4PageP19FormWidgetSignature
 libpoppler-qt5.so.1:_ZN7Poppler18FormFieldSignatureC2EPNS_12DocumentDataEP4PageP19FormWidgetSignature
 libpoppler-qt5.so.1:_ZN7Poppler18FormFieldSignatureD0Ev
@@ -1174,6 +1183,7 @@ libpoppler-qt5.so.1:_ZN7Poppler8LinkHideD1Ev
 libpoppler-qt5.so.1:_ZN7Poppler8LinkHideD2Ev
 libpoppler-qt5.so.1:_ZN7Poppler9FormField10setVisibleEb
 libpoppler-qt5.so.1:_ZN7Poppler9FormField11setReadOnlyEb
+libpoppler-qt5.so.1:_ZN7Poppler9FormField12setPrintableEb
 libpoppler-qt5.so.1:_ZN7Poppler9FormFieldC1ERNS_13FormFieldDataE
 libpoppler-qt5.so.1:_ZN7Poppler9FormFieldC2ERNS_13FormFieldDataE
 libpoppler-qt5.so.1:_ZN7Poppler9FormFieldD0Ev
@@ -1343,6 +1353,7 @@ libpoppler-qt5.so.1:_ZNK7Poppler15CertificateInfo6isNullEv
 libpoppler-qt5.so.1:_ZNK7Poppler15CertificateInfo7versionEv
 libpoppler-qt5.so.1:_ZNK7Poppler15CertificateInfo9publicKeyEv
 libpoppler-qt5.so.1:_ZNK7Poppler15FormFieldButton10buttonTypeEv
+libpoppler-qt5.so.1:_ZNK7Poppler15FormFieldButton4iconEv
 libpoppler-qt5.so.1:_ZNK7Poppler15FormFieldButton4typeEv
 libpoppler-qt5.so.1:_ZNK7Poppler15FormFieldButton5stateEv
 libpoppler-qt5.so.1:_ZNK7Poppler15FormFieldButton7captionEv
@@ -1534,6 +1545,7 @@ libpoppler-qt5.so.1:_ZNK7Poppler8LinkHide12isShowActionEv
 libpoppler-qt5.so.1:_ZNK7Poppler8LinkHide7targetsEv
 libpoppler-qt5.so.1:_ZNK7Poppler8LinkHide8linkTypeEv
 libpoppler-qt5.so.1:_ZNK7Poppler9FormField10isReadOnlyEv
+libpoppler-qt5.so.1:_ZNK7Poppler9FormField11isPrintableEv
 libpoppler-qt5.so.1:_ZNK7Poppler9FormField16activationActionEv
 libpoppler-qt5.so.1:_ZNK7Poppler9FormField16additionalActionENS0_20AdditionalActionTypeE
 libpoppler-qt5.so.1:_ZNK7Poppler9FormField16additionalActionENS_10Annotation20AdditionalActionTypeE
@@ -1892,6 +1904,7 @@ libpoppler.so.89:_ZN11AnnotScreenD0Ev
 libpoppler.so.89:_ZN11AnnotScreenD1Ev
 libpoppler.so.89:_ZN11AnnotScreenD2Ev
 libpoppler.so.89:_ZN11AnnotWidget10initializeEP6PDFDocP4Dict
+libpoppler.so.89:_ZN11AnnotWidget16setNewAppearanceEO6Object
 libpoppler.so.89:_ZN11AnnotWidget19getAdditionalActionEN5Annot21AdditionalActionsTypeE
 libpoppler.so.89:_ZN11AnnotWidget22updateAppearanceStreamEv
 libpoppler.so.89:_ZN11AnnotWidget23generateFieldAppearanceEPb

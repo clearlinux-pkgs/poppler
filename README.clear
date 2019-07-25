@@ -8,6 +8,8 @@
 When updating poppler, please rebuild the following packages:
 	* cups-filters
 	* kitinerary
+	* gdal
+	* openoffice 
 
 Remember to update the header list in the extras file
 
