@@ -3,9 +3,9 @@
 /usr/lib64/pkgconfig/poppler.pc
 /usr/lib64/pkgconfig/poppler-splash.pc
 /usr/lib64/libpoppler-qt5.so.1
-/usr/lib64/libpoppler-qt5.so.1.19.0
+/usr/lib64/libpoppler-qt5.so.1.20.0
 /usr/lib64/haswell/libpoppler-qt5.so.1
-/usr/lib64/haswell/libpoppler-qt5.so.1.19.0
+/usr/lib64/haswell/libpoppler-qt5.so.1.20.0
 
 
 # This file should contain all headers, except:
