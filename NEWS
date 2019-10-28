@@ -1,3 +1,54 @@
+Release 0.82.0:
+        core:
+         * Fix not being able to open some files. Issue #832
+         * Fix crashes in malformed files
+         * Fix memory leak on broken files
+         * Minor performance improvements
+         * Minor code improvements
+
+        glib:
+         * Add poppler_document_new_from_bytes
+         * PopplerAttachment: Silence deprecation warnings for ctime/mtime
+
+        build system:
+         * pdf-inspector: Support builddir != srcdir
+         * Install Cairo* headers if Cairo has been found
+
+Release 0.81.0:
+        core:
+         * Splash: Always enable support for CMYK rasterization
+         * CairoOutputDev: Check scaled dimensions for 0. Issue #737
+         * BaseCryptStream: Fix potential uninitialized memory read
+         * SplashBitmap: Fix wrong width condition for splashModeDeviceN8
+         * Fix crashes in malformed files
+
+Release 0.80.0:
+        core:
+         * Annotations: Implement support for setting a different text in the appearance stream than the real text
+         * Splash: Optionally use small_vector from boost
+         * Fix memory leaks on broken files
+         * Fix abort on broken files
+         * Small code simplifications
+         * Remove USE_FIXEDPOINT support. Issue #821
+
+        qt5:
+         * Fix MSVC build
+         * Add subsitute-font information
+         * Fix since marker of some functions
+         * Fix leak when aborting text extraction
+         * Small code simplifications
+
+        glib:
+         * Make print scaling getter visible
+         * Make Duplex/NumCopies/PrintPageRange preference available in API
+         * Implement Movie API
+
+        utils:
+         * pdftotext: Add -nodiag flag to remove diagonal text on output
+
+        build system:
+         * Mark external lib include dirs as SYSTEM
+
 Release 0.79.0:
         core:
          * Fix regression on TextSelectionPainter

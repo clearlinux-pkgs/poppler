@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
 Name     : poppler
-Version  : 0.79.0
-Release  : 54
-URL      : https://poppler.freedesktop.org/poppler-0.79.0.tar.xz
-Source0  : https://poppler.freedesktop.org/poppler-0.79.0.tar.xz
-Source99 : https://poppler.freedesktop.org/poppler-0.79.0.tar.xz.sig
+Version  : 0.82.0
+Release  : 55
+URL      : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz
+Source0  : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz
+Source1 : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0
@@ -18,12 +18,14 @@ Requires: poppler-data = %{version}-%{release}
 Requires: poppler-lib = %{version}-%{release}
 Requires: poppler-license = %{version}-%{release}
 Requires: poppler-man = %{version}-%{release}
+BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : curl-dev
 BuildRequires : freetype-dev
 BuildRequires : glibc-bin
 BuildRequires : glibc-dev
+BuildRequires : gtk+-dev
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : libpng-dev
 BuildRequires : pkg-config
@@ -37,8 +39,10 @@ BuildRequires : pkgconfig(gobject-introspection-1.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(lcms2)
 BuildRequires : pkgconfig(nss)
+BuildRequires : qtbase-dev
 BuildRequires : qtbase-extras
 BuildRequires : tiff-dev
+BuildRequires : util-linux
 BuildRequires : zlib-dev
 
 %description
@@ -113,14 +117,14 @@ man components for the poppler package.
 
 
 %prep
-%setup -q -n poppler-0.79.0
+%setup -q -n poppler-0.82.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564022169
+export SOURCE_DATE_EPOCH=1572301043
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -132,7 +136,7 @@ export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 %cmake .. -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_UTILS=ON -DENABLE_LIBOPENJPEG=none
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 mkdir -p clr-build-avx2
 pushd clr-build-avx2
@@ -147,16 +151,16 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -f
 export CFLAGS="$CFLAGS -march=haswell -m64"
 export CXXFLAGS="$CXXFLAGS -march=haswell -m64"
 %cmake .. -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_UTILS=ON -DENABLE_LIBOPENJPEG=none
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1564022169
+export SOURCE_DATE_EPOCH=1572301043
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
-cp COPYING %{buildroot}/usr/share/package-licenses/poppler/COPYING
-cp COPYING3 %{buildroot}/usr/share/package-licenses/poppler/COPYING3
-cp cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/poppler/cmake_modules_COPYING-CMAKE-SCRIPTS
+cp %{_builddir}/poppler-0.82.0/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/poppler-0.82.0/COPYING3 %{buildroot}/usr/share/package-licenses/poppler/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/poppler-0.82.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/poppler/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build-avx2
 %make_install_avx2  || :
 popd
@@ -203,128 +207,9 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-%exclude /usr/include/poppler/Annot.h
-%exclude /usr/include/poppler/Array.h
-%exclude /usr/include/poppler/BuiltinFont.h
-%exclude /usr/include/poppler/BuiltinFontTables.h
-%exclude /usr/include/poppler/CMap.h
-%exclude /usr/include/poppler/CachedFile.h
-%exclude /usr/include/poppler/Catalog.h
-%exclude /usr/include/poppler/CertificateInfo.h
-%exclude /usr/include/poppler/CharCodeToUnicode.h
-%exclude /usr/include/poppler/CharTypes.h
-%exclude /usr/include/poppler/CompactFontTables.h
-%exclude /usr/include/poppler/CurlCachedFile.h
-%exclude /usr/include/poppler/CurlPDFDocBuilder.h
-%exclude /usr/include/poppler/DateInfo.h
-%exclude /usr/include/poppler/Decrypt.h
-%exclude /usr/include/poppler/Dict.h
-%exclude /usr/include/poppler/Error.h
-%exclude /usr/include/poppler/ErrorCodes.h
-%exclude /usr/include/poppler/FileSpec.h
-%exclude /usr/include/poppler/FontEncodingTables.h
-%exclude /usr/include/poppler/FontInfo.h
-%exclude /usr/include/poppler/Form.h
-%exclude /usr/include/poppler/Function.h
-%exclude /usr/include/poppler/Gfx.h
-%exclude /usr/include/poppler/GfxFont.h
-%exclude /usr/include/poppler/GfxState.h
-%exclude /usr/include/poppler/GfxState_helpers.h
-%exclude /usr/include/poppler/GlobalParams.h
-%exclude /usr/include/poppler/Hints.h
-%exclude /usr/include/poppler/JArithmeticDecoder.h
-%exclude /usr/include/poppler/JBIG2Stream.h
-%exclude /usr/include/poppler/JPXStream.h
-%exclude /usr/include/poppler/Lexer.h
-%exclude /usr/include/poppler/Linearization.h
-%exclude /usr/include/poppler/Link.h
-%exclude /usr/include/poppler/LocalPDFDocBuilder.h
-%exclude /usr/include/poppler/MarkedContentOutputDev.h
-%exclude /usr/include/poppler/Movie.h
-%exclude /usr/include/poppler/NameToCharCode.h
-%exclude /usr/include/poppler/NameToUnicodeTable.h
-%exclude /usr/include/poppler/Object.h
-%exclude /usr/include/poppler/OptionalContent.h
-%exclude /usr/include/poppler/Outline.h
-%exclude /usr/include/poppler/OutputDev.h
-%exclude /usr/include/poppler/PDFDoc.h
-%exclude /usr/include/poppler/PDFDocBuilder.h
-%exclude /usr/include/poppler/PDFDocEncoding.h
-%exclude /usr/include/poppler/PDFDocFactory.h
-%exclude /usr/include/poppler/PSOutputDev.h
-%exclude /usr/include/poppler/PSTokenizer.h
-%exclude /usr/include/poppler/Page.h
-%exclude /usr/include/poppler/PageTransition.h
-%exclude /usr/include/poppler/Parser.h
-%exclude /usr/include/poppler/PopplerCache.h
-%exclude /usr/include/poppler/PreScanOutputDev.h
-%exclude /usr/include/poppler/ProfileData.h
-%exclude /usr/include/poppler/Rendition.h
-%exclude /usr/include/poppler/SecurityHandler.h
-%exclude /usr/include/poppler/Sound.h
-%exclude /usr/include/poppler/SplashOutputDev.h
-%exclude /usr/include/poppler/StdinCachedFile.h
-%exclude /usr/include/poppler/StdinPDFDocBuilder.h
-%exclude /usr/include/poppler/Stream-CCITT.h
-%exclude /usr/include/poppler/Stream.h
-%exclude /usr/include/poppler/StructElement.h
-%exclude /usr/include/poppler/StructTreeRoot.h
-%exclude /usr/include/poppler/TextOutputDev.h
-%exclude /usr/include/poppler/UTF.h
-%exclude /usr/include/poppler/UnicodeCClassTables.h
-%exclude /usr/include/poppler/UnicodeCompTables.h
-%exclude /usr/include/poppler/UnicodeDecompTables.h
-%exclude /usr/include/poppler/UnicodeMap.h
-%exclude /usr/include/poppler/UnicodeMapFuncs.h
-%exclude /usr/include/poppler/UnicodeMapTables.h
-%exclude /usr/include/poppler/UnicodeTypeTable.h
-%exclude /usr/include/poppler/ViewerPreferences.h
-%exclude /usr/include/poppler/XRef.h
-%exclude /usr/include/poppler/fofi/FoFiBase.h
-%exclude /usr/include/poppler/fofi/FoFiEncodings.h
-%exclude /usr/include/poppler/fofi/FoFiIdentifier.h
-%exclude /usr/include/poppler/fofi/FoFiTrueType.h
-%exclude /usr/include/poppler/fofi/FoFiType1.h
-%exclude /usr/include/poppler/fofi/FoFiType1C.h
-%exclude /usr/include/poppler/goo/FixedPoint.h
-%exclude /usr/include/poppler/goo/GooCheckedOps.h
-%exclude /usr/include/poppler/goo/GooLikely.h
-%exclude /usr/include/poppler/goo/GooString.h
-%exclude /usr/include/poppler/goo/GooTimer.h
-%exclude /usr/include/poppler/goo/ImgWriter.h
-%exclude /usr/include/poppler/goo/JpegWriter.h
-%exclude /usr/include/poppler/goo/PNGWriter.h
-%exclude /usr/include/poppler/goo/TiffWriter.h
-%exclude /usr/include/poppler/goo/gdir.h
-%exclude /usr/include/poppler/goo/gfile.h
-%exclude /usr/include/poppler/goo/gmem.h
-%exclude /usr/include/poppler/goo/grandom.h
-%exclude /usr/include/poppler/goo/gstrtod.h
-%exclude /usr/include/poppler/poppler-config.h
-%exclude /usr/include/poppler/splash/Splash.h
-%exclude /usr/include/poppler/splash/SplashBitmap.h
-%exclude /usr/include/poppler/splash/SplashClip.h
-%exclude /usr/include/poppler/splash/SplashErrorCodes.h
-%exclude /usr/include/poppler/splash/SplashFTFont.h
-%exclude /usr/include/poppler/splash/SplashFTFontEngine.h
-%exclude /usr/include/poppler/splash/SplashFTFontFile.h
-%exclude /usr/include/poppler/splash/SplashFont.h
-%exclude /usr/include/poppler/splash/SplashFontEngine.h
-%exclude /usr/include/poppler/splash/SplashFontFile.h
-%exclude /usr/include/poppler/splash/SplashFontFileID.h
-%exclude /usr/include/poppler/splash/SplashGlyphBitmap.h
-%exclude /usr/include/poppler/splash/SplashMath.h
-%exclude /usr/include/poppler/splash/SplashPath.h
-%exclude /usr/include/poppler/splash/SplashPattern.h
-%exclude /usr/include/poppler/splash/SplashScreen.h
-%exclude /usr/include/poppler/splash/SplashState.h
-%exclude /usr/include/poppler/splash/SplashTypes.h
-%exclude /usr/include/poppler/splash/SplashXPath.h
-%exclude /usr/include/poppler/splash/SplashXPathScanner.h
-%exclude /usr/lib64/haswell/libpoppler.so
-%exclude /usr/lib64/libpoppler.so
-%exclude /usr/lib64/pkgconfig/poppler-splash.pc
-%exclude /usr/lib64/pkgconfig/poppler.pc
+/usr/include/poppler/CairoFontEngine.h
+/usr/include/poppler/CairoOutputDev.h
+/usr/include/poppler/CairoRescaleBox.h
 /usr/include/poppler/cpp/poppler-destination.h
 /usr/include/poppler/cpp/poppler-document.h
 /usr/include/poppler/cpp/poppler-embedded-file.h
@@ -457,7 +342,6 @@ popd
 /usr/include/poppler/fofi/FoFiTrueType.h
 /usr/include/poppler/fofi/FoFiType1.h
 /usr/include/poppler/fofi/FoFiType1C.h
-/usr/include/poppler/goo/FixedPoint.h
 /usr/include/poppler/goo/GooCheckedOps.h
 /usr/include/poppler/goo/GooLikely.h
 /usr/include/poppler/goo/GooString.h
@@ -493,38 +377,34 @@ popd
 /usr/include/poppler/splash/SplashXPath.h
 /usr/include/poppler/splash/SplashXPathScanner.h
 /usr/lib64/haswell/libpoppler-qt5.so.1
-/usr/lib64/haswell/libpoppler-qt5.so.1.20.0
+/usr/lib64/haswell/libpoppler-qt5.so.1.21.0
 /usr/lib64/haswell/libpoppler.so
 /usr/lib64/libpoppler-qt5.so.1
-/usr/lib64/libpoppler-qt5.so.1.20.0
+/usr/lib64/libpoppler-qt5.so.1.21.0
 /usr/lib64/libpoppler.so
 /usr/lib64/pkgconfig/poppler-splash.pc
 /usr/lib64/pkgconfig/poppler.pc
 
 %files lib
 %defattr(-,root,root,-)
-%exclude /usr/lib64/haswell/libpoppler-qt5.so.1
-%exclude /usr/lib64/haswell/libpoppler-qt5.so.1.20.0
-%exclude /usr/lib64/libpoppler-qt5.so.1
-%exclude /usr/lib64/libpoppler-qt5.so.1.20.0
 /usr/lib64/haswell/libpoppler-cpp.so.0
 /usr/lib64/haswell/libpoppler-cpp.so.0.7.0
 /usr/lib64/haswell/libpoppler-glib.so.8
-/usr/lib64/haswell/libpoppler-glib.so.8.13.0
-/usr/lib64/haswell/libpoppler.so.89
-/usr/lib64/haswell/libpoppler.so.89.0.0
+/usr/lib64/haswell/libpoppler-glib.so.8.15.0
+/usr/lib64/haswell/libpoppler.so.92
+/usr/lib64/haswell/libpoppler.so.92.0.0
 /usr/lib64/libpoppler-cpp.so.0
 /usr/lib64/libpoppler-cpp.so.0.7.0
 /usr/lib64/libpoppler-glib.so.8
-/usr/lib64/libpoppler-glib.so.8.13.0
-/usr/lib64/libpoppler.so.89
-/usr/lib64/libpoppler.so.89.0.0
+/usr/lib64/libpoppler-glib.so.8.15.0
+/usr/lib64/libpoppler.so.92
+/usr/lib64/libpoppler.so.92.0.0
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/poppler/COPYING
-/usr/share/package-licenses/poppler/COPYING3
-/usr/share/package-licenses/poppler/cmake_modules_COPYING-CMAKE-SCRIPTS
+/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+/usr/share/package-licenses/poppler/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+/usr/share/package-licenses/poppler/ff3ed70db4739b3c6747c7f624fe2bad70802987
 
 %files man
 %defattr(0644,root,root,0755)
