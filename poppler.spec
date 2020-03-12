@@ -6,7 +6,7 @@
 #
 Name     : poppler
 Version  : 0.82.0
-Release  : 57
+Release  : 58
 URL      : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz
 Source1 : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz.sig
