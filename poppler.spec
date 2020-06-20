@@ -6,10 +6,10 @@
 #
 Name     : poppler
 Version  : 0.82.0
-Release  : 58
+Release  : 59
 URL      : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz
-Source1 : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz.sig
+Source1  : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0
@@ -28,6 +28,7 @@ BuildRequires : glibc-dev
 BuildRequires : gtk+-dev
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : libpng-dev
+BuildRequires : openjpeg
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(cairo-pdf)
 BuildRequires : pkgconfig(fontconfig)
@@ -118,13 +119,14 @@ man components for the poppler package.
 
 %prep
 %setup -q -n poppler-0.82.0
+cd %{_builddir}/poppler-0.82.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572301043
+export SOURCE_DATE_EPOCH=1592656053
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -132,11 +134,11 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 %cmake .. -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_UTILS=ON -DENABLE_LIBOPENJPEG=none
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 mkdir -p clr-build-avx2
 pushd clr-build-avx2
@@ -145,17 +147,19 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -march=haswell -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -march=haswell -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -march=haswell -mzero-caller-saved-regs=used "
+export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -march=haswell -mzero-caller-saved-regs=used "
+export FFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -march=haswell -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -march=haswell -mzero-caller-saved-regs=used "
 export CFLAGS="$CFLAGS -march=haswell -m64"
 export CXXFLAGS="$CXXFLAGS -march=haswell -m64"
+export FFLAGS="$FFLAGS -march=haswell -m64"
+export FCFLAGS="$FCFLAGS -march=haswell -m64"
 %cmake .. -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_UTILS=ON -DENABLE_LIBOPENJPEG=none
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1572301043
+export SOURCE_DATE_EPOCH=1592656053
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp %{_builddir}/poppler-0.82.0/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
