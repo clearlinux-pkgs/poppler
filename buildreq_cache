@@ -1,8 +1,0 @@
-0.82.0
-curl-dev
-gtk+-dev
-pkgconfig(lcms2)
-pkgconfig(nss)
-qtbase-dev
-tiff-dev
-util-linux

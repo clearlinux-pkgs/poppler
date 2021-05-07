@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
 Name     : poppler
-Version  : 0.82.0
-Release  : 61
-URL      : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz
-Source0  : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz
-Source1  : https://poppler.freedesktop.org/poppler-0.82.0.tar.xz.sig
+Version  : 21.05.0
+Release  : 62
+URL      : https://poppler.freedesktop.org/poppler-21.05.0.tar.xz
+Source0  : https://poppler.freedesktop.org/poppler-21.05.0.tar.xz
+Source1  : https://poppler.freedesktop.org/poppler-21.05.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0
@@ -25,7 +25,7 @@ BuildRequires : curl-dev
 BuildRequires : freetype-dev
 BuildRequires : glibc-bin
 BuildRequires : glibc-dev
-BuildRequires : gtk+-dev
+BuildRequires : gtk-doc-data
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : libpng-dev
 BuildRequires : openjpeg
@@ -40,10 +40,10 @@ BuildRequires : pkgconfig(gobject-introspection-1.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(lcms2)
 BuildRequires : pkgconfig(nss)
+BuildRequires : python3
 BuildRequires : qtbase-dev
 BuildRequires : qtbase-extras
 BuildRequires : tiff-dev
-BuildRequires : util-linux
 BuildRequires : zlib-dev
 
 %description
@@ -118,15 +118,15 @@ man components for the poppler package.
 
 
 %prep
-%setup -q -n poppler-0.82.0
-cd %{_builddir}/poppler-0.82.0
+%setup -q -n poppler-21.05.0
+cd %{_builddir}/poppler-21.05.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1592656053
+export SOURCE_DATE_EPOCH=1620418331
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -146,10 +146,10 @@ export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -march=haswell -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -march=haswell -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -march=haswell -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -march=haswell -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -fzero-call-used-regs=used -march=haswell "
+export FCFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -fzero-call-used-regs=used -march=haswell "
+export FFLAGS="$FFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -fzero-call-used-regs=used -march=haswell "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -ffat-lto-objects -flto=4 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -fzero-call-used-regs=used -march=haswell "
 export CFLAGS="$CFLAGS -march=haswell -m64"
 export CXXFLAGS="$CXXFLAGS -march=haswell -m64"
 export FFLAGS="$FFLAGS -march=haswell -m64"
@@ -159,12 +159,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1592656053
+export SOURCE_DATE_EPOCH=1620418331
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
-cp %{_builddir}/poppler-0.82.0/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/poppler-0.82.0/COPYING3 %{buildroot}/usr/share/package-licenses/poppler/8624bcdae55baeef00cd11d5dfcfa60f68710a02
-cp %{_builddir}/poppler-0.82.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/poppler/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/poppler-21.05.0/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/poppler-21.05.0/COPYING3 %{buildroot}/usr/share/package-licenses/poppler/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/poppler-21.05.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/poppler/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build-avx2
 %make_install_avx2  || :
 popd
@@ -217,6 +217,7 @@ popd
 /usr/include/poppler/cpp/poppler-destination.h
 /usr/include/poppler/cpp/poppler-document.h
 /usr/include/poppler/cpp/poppler-embedded-file.h
+/usr/include/poppler/cpp/poppler-font-private.h
 /usr/include/poppler/cpp/poppler-font.h
 /usr/include/poppler/cpp/poppler-global.h
 /usr/include/poppler/cpp/poppler-image.h
@@ -226,6 +227,7 @@ popd
 /usr/include/poppler/cpp/poppler-rectangle.h
 /usr/include/poppler/cpp/poppler-toc.h
 /usr/include/poppler/cpp/poppler-version.h
+/usr/include/poppler/cpp/poppler_cpp_export.h
 /usr/include/poppler/glib/poppler-action.h
 /usr/include/poppler/glib/poppler-annot.h
 /usr/include/poppler/glib/poppler-attachment.h
@@ -256,7 +258,6 @@ popd
 /usr/lib64/libpoppler-cpp.so
 /usr/lib64/libpoppler-glib.so
 /usr/lib64/libpoppler-qt5.so
-/usr/lib64/pkgconfig/poppler-cairo.pc
 /usr/lib64/pkgconfig/poppler-cpp.pc
 /usr/lib64/pkgconfig/poppler-glib.pc
 /usr/lib64/pkgconfig/poppler-qt5.pc
@@ -265,15 +266,13 @@ popd
 %defattr(-,root,root,-)
 /usr/include/poppler/Annot.h
 /usr/include/poppler/Array.h
-/usr/include/poppler/BuiltinFont.h
-/usr/include/poppler/BuiltinFontTables.h
+/usr/include/poppler/BBoxOutputDev.h
 /usr/include/poppler/CMap.h
 /usr/include/poppler/CachedFile.h
 /usr/include/poppler/Catalog.h
 /usr/include/poppler/CertificateInfo.h
 /usr/include/poppler/CharCodeToUnicode.h
 /usr/include/poppler/CharTypes.h
-/usr/include/poppler/CompactFontTables.h
 /usr/include/poppler/CurlCachedFile.h
 /usr/include/poppler/CurlPDFDocBuilder.h
 /usr/include/poppler/DateInfo.h
@@ -295,6 +294,7 @@ popd
 /usr/include/poppler/JArithmeticDecoder.h
 /usr/include/poppler/JBIG2Stream.h
 /usr/include/poppler/JPXStream.h
+/usr/include/poppler/JSInfo.h
 /usr/include/poppler/Lexer.h
 /usr/include/poppler/Linearization.h
 /usr/include/poppler/Link.h
@@ -360,6 +360,7 @@ popd
 /usr/include/poppler/goo/grandom.h
 /usr/include/poppler/goo/gstrtod.h
 /usr/include/poppler/poppler-config.h
+/usr/include/poppler/poppler_private_export.h
 /usr/include/poppler/splash/Splash.h
 /usr/include/poppler/splash/SplashBitmap.h
 /usr/include/poppler/splash/SplashClip.h
@@ -381,28 +382,27 @@ popd
 /usr/include/poppler/splash/SplashXPath.h
 /usr/include/poppler/splash/SplashXPathScanner.h
 /usr/lib64/haswell/libpoppler-qt5.so.1
-/usr/lib64/haswell/libpoppler-qt5.so.1.21.0
+/usr/lib64/haswell/libpoppler-qt5.so.1.28.0
 /usr/lib64/haswell/libpoppler.so
 /usr/lib64/libpoppler-qt5.so.1
-/usr/lib64/libpoppler-qt5.so.1.21.0
+/usr/lib64/libpoppler-qt5.so.1.28.0
 /usr/lib64/libpoppler.so
-/usr/lib64/pkgconfig/poppler-splash.pc
 /usr/lib64/pkgconfig/poppler.pc
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/haswell/libpoppler-cpp.so.0
-/usr/lib64/haswell/libpoppler-cpp.so.0.7.0
+/usr/lib64/haswell/libpoppler-cpp.so.0.9.0
 /usr/lib64/haswell/libpoppler-glib.so.8
-/usr/lib64/haswell/libpoppler-glib.so.8.15.0
-/usr/lib64/haswell/libpoppler.so.92
-/usr/lib64/haswell/libpoppler.so.92.0.0
+/usr/lib64/haswell/libpoppler-glib.so.8.21.0
+/usr/lib64/haswell/libpoppler.so.110
+/usr/lib64/haswell/libpoppler.so.110.0.0
 /usr/lib64/libpoppler-cpp.so.0
-/usr/lib64/libpoppler-cpp.so.0.7.0
+/usr/lib64/libpoppler-cpp.so.0.9.0
 /usr/lib64/libpoppler-glib.so.8
-/usr/lib64/libpoppler-glib.so.8.15.0
-/usr/lib64/libpoppler.so.92
-/usr/lib64/libpoppler.so.92.0.0
+/usr/lib64/libpoppler-glib.so.8.21.0
+/usr/lib64/libpoppler.so.110
+/usr/lib64/libpoppler.so.110.0.0
 
 %files license
 %defattr(0644,root,root,0755)

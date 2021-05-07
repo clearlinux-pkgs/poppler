@@ -13,6 +13,7 @@ liblcms2.so.2
 libm.so.6
 libnspr4.so
 libnss3.so
+libplc4.so
 libpng16.so.16
 libpthread.so.0
 libsmime3.so
