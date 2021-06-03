@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
 Name     : poppler
-Version  : 21.06.0
-Release  : 63
-URL      : https://poppler.freedesktop.org/poppler-21.06.0.tar.xz
-Source0  : https://poppler.freedesktop.org/poppler-21.06.0.tar.xz
-Source1  : https://poppler.freedesktop.org/poppler-21.06.0.tar.xz.sig
+Version  : 21.06.1
+Release  : 64
+URL      : https://poppler.freedesktop.org/poppler-21.06.1.tar.xz
+Source0  : https://poppler.freedesktop.org/poppler-21.06.1.tar.xz
+Source1  : https://poppler.freedesktop.org/poppler-21.06.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0
@@ -118,15 +118,15 @@ man components for the poppler package.
 
 
 %prep
-%setup -q -n poppler-21.06.0
-cd %{_builddir}/poppler-21.06.0
+%setup -q -n poppler-21.06.1
+cd %{_builddir}/poppler-21.06.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1622753891
+export SOURCE_DATE_EPOCH=1622763673
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -159,12 +159,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1622753891
+export SOURCE_DATE_EPOCH=1622763673
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
-cp %{_builddir}/poppler-21.06.0/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/poppler-21.06.0/COPYING3 %{buildroot}/usr/share/package-licenses/poppler/8624bcdae55baeef00cd11d5dfcfa60f68710a02
-cp %{_builddir}/poppler-21.06.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/poppler/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/poppler-21.06.1/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/poppler-21.06.1/COPYING3 %{buildroot}/usr/share/package-licenses/poppler/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/poppler-21.06.1/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/poppler/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build-avx2
 %make_install_avx2  || :
 popd
