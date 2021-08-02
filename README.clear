@@ -6,8 +6,9 @@
 
 
 When updating poppler, please rebuild the following packages:
-	* kitinerary
 	* gdal
+	* inkscape
+	* kitinerary
 	* libreoffice 
 	* texlive
 
