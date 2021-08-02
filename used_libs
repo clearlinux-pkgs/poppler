@@ -11,11 +11,11 @@ libgobject-2.0.so.0
 libjpeg.so.62
 liblcms2.so.2
 libm.so.6
+libmvec.so.1
 libnspr4.so
 libnss3.so
 libplc4.so
 libpng16.so.16
-libpthread.so.0
 libsmime3.so
 libstdc++.so.6
 libtiff.so.5
