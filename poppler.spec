@@ -6,7 +6,7 @@
 #
 Name     : poppler
 Version  : 21.08.0
-Release  : 67
+Release  : 68
 URL      : https://poppler.freedesktop.org/poppler-21.08.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-21.08.0.tar.xz
 Source1  : https://poppler.freedesktop.org/poppler-21.08.0.tar.xz.sig
