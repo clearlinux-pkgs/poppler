@@ -6,7 +6,7 @@
 #
 Name     : poppler
 Version  : 21.12.0
-Release  : 69
+Release  : 70
 URL      : https://poppler.freedesktop.org/poppler-21.12.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-21.12.0.tar.xz
 Source1  : https://poppler.freedesktop.org/poppler-21.12.0.tar.xz.sig
@@ -137,7 +137,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1638627362
+export SOURCE_DATE_EPOCH=1638627820
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -170,7 +170,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1638627362
+export SOURCE_DATE_EPOCH=1638627820
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp %{_builddir}/poppler-21.12.0/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
@@ -211,12 +211,9 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/poppler/AnnotStampImageHelper.h
 /usr/include/poppler/CairoFontEngine.h
 /usr/include/poppler/CairoOutputDev.h
 /usr/include/poppler/CairoRescaleBox.h
-/usr/include/poppler/FDPDFDocBuilder.h
-/usr/include/poppler/FILECacheLoader.h
 /usr/include/poppler/cpp/poppler-destination.h
 /usr/include/poppler/cpp/poppler-document.h
 /usr/include/poppler/cpp/poppler-embedded-file.h
@@ -265,6 +262,7 @@ popd
 %files extras
 %defattr(-,root,root,-)
 /usr/include/poppler/Annot.h
+/usr/include/poppler/AnnotStampImageHelper.h
 /usr/include/poppler/Array.h
 /usr/include/poppler/BBoxOutputDev.h
 /usr/include/poppler/CMap.h
@@ -280,6 +278,8 @@ popd
 /usr/include/poppler/Dict.h
 /usr/include/poppler/Error.h
 /usr/include/poppler/ErrorCodes.h
+/usr/include/poppler/FDPDFDocBuilder.h
+/usr/include/poppler/FILECacheLoader.h
 /usr/include/poppler/FileSpec.h
 /usr/include/poppler/FontEncodingTables.h
 /usr/include/poppler/FontInfo.h
@@ -380,6 +380,7 @@ popd
 /usr/include/poppler/splash/SplashXPath.h
 /usr/include/poppler/splash/SplashXPathScanner.h
 /usr/lib64/libpoppler-qt5.so.1
+/usr/lib64/libpoppler-qt5.so.1.30.0
 /usr/lib64/libpoppler.so
 /usr/lib64/pkgconfig/poppler.pc
 
@@ -393,7 +394,6 @@ popd
 /usr/lib64/libpoppler-cpp.so.0.9.0
 /usr/lib64/libpoppler-glib.so.8
 /usr/lib64/libpoppler-glib.so.8.22.0
-/usr/lib64/libpoppler-qt5.so.1.30.0
 /usr/lib64/libpoppler.so.116
 /usr/lib64/libpoppler.so.116.0.0
 /usr/share/clear/optimized-elf/lib*

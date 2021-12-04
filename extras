@@ -3,15 +3,18 @@
 /usr/lib64/pkgconfig/poppler.pc
 /usr/lib64/pkgconfig/poppler-splash.pc
 /usr/lib64/libpoppler-qt5.so.1
-/usr/lib64/libpoppler-qt5.so.1.29.0
+/usr/lib64/libpoppler-qt5.so.1.30.0
 /usr/lib64/haswell/libpoppler-qt5.so.1
-/usr/lib64/haswell/libpoppler-qt5.so.1.29.0
+/usr/lib64/haswell/libpoppler-qt5.so.1.30.0
 
 
 # This file should contain all headers, except:
 #  /usr/include/poppler/cpp/*
 #  /usr/include/poppler/glib/*
 #  /usr/include/poppler/qt5/*
+/usr/include/poppler/AnnotStampImageHelper.h
+/usr/include/poppler/FDPDFDocBuilder.h
+/usr/include/poppler/FILECacheLoader.h
 /usr/include/poppler/BBoxOutputDev.h
 /usr/include/poppler/JSInfo.h
 /usr/include/poppler/poppler_private_export.h
