@@ -1,3 +1,74 @@
+Release 22.04.0:
+        core:
+         * Fix underline sometimes being drawn only partially
+         * Fix Adobe Reader not reading some of the contents we write correctly
+         * Fix code that workarounds some broken-ish files
+         * FoFiTrueType: Parse CFF2 fonts too
+         * FoFiTrueType: Support cmap types 2 and 13
+         * Fix a few small memory leaks
+         * code improvements
+
+        qt:
+         * Handle SaveAs named action
+         * Annotations: don't change the text color when changing the font
+
+        utils:
+         * pdftotext: print creation and modification date when using htmlmeta param
+
+        glib:
+         * Fix returning internal data of temporary strings
+
+        cpp:
+         * Fix code incompatibility with MSVC
+
+        build system:
+         * poppler internal library is no longer forced to static on MSVC
+         * Error out if iconv is not available and the cpp frontend is enabled
+         * Require FreeType 2.8
+
+Release 22.03.0:
+        core:
+         * Signature: Fix finding Signatures that are in Pages not not in the global the Forms object
+         * Signature: Improve getting the path to the firefox certificate database
+         * Splash: Fix rendering of some joints. Issue #1212
+         * Fix get_poppler_localdir for relocatable Windows builds
+         * Minor code improvements
+
+        qt:
+         * Minor code improvements
+
+        utils:
+         * pdfimages: Fix the wrong Stream being passed for drawMaskedImage
+
+        build system:
+         * Small code improvements
+
+Release 22.02.0:
+        core:
+         * Signature: Add a way to detect unsigned FormFieldSignature
+         * Signature: Suport background image when using left and right text
+         * Signature: Fix path where to search for Firefox NSS in Windows
+         * Signature: Fix NSS code to work correctly in Windows/Android
+         * Count only signature fields in PDFDoc::getNumSignatureFields
+         * Minor code improvements
+
+        qt:
+         * Allow signing unsigned signature fields
+         * Allow passing a background image for the signature when signing
+         * Allow passing the document password when signing
+         * Fix leftFontSize being ignored when signing
+
+        glib:
+         * try with utf8 password if latin1 fails
+         * New method for getting all signature fields of a document
+         * Fix compile with MSVC
+
+        utils:
+         * pdfsig: Fix compile with MSVC
+
+        build system:
+         * Fix NSS cmake check for MSVC
+
 Release 22.01.0:
         core:
          * Allow local (relative to dll) fonts dir on Windows

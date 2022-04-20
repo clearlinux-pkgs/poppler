@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
 Name     : poppler
-Version  : 22.01.0
-Release  : 73
-URL      : https://poppler.freedesktop.org/poppler-22.01.0.tar.xz
-Source0  : https://poppler.freedesktop.org/poppler-22.01.0.tar.xz
-Source1  : https://poppler.freedesktop.org/poppler-22.01.0.tar.xz.sig
+Version  : 22.04.0
+Release  : 74
+URL      : https://poppler.freedesktop.org/poppler-22.04.0.tar.xz
+Source0  : https://poppler.freedesktop.org/poppler-22.04.0.tar.xz
+Source1  : https://poppler.freedesktop.org/poppler-22.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0
@@ -129,15 +129,15 @@ man components for the poppler package.
 
 
 %prep
-%setup -q -n poppler-22.01.0
-cd %{_builddir}/poppler-22.01.0
+%setup -q -n poppler-22.04.0
+cd %{_builddir}/poppler-22.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1643507849
+export SOURCE_DATE_EPOCH=1650422125
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -170,12 +170,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1643507849
+export SOURCE_DATE_EPOCH=1650422125
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
-cp %{_builddir}/poppler-22.01.0/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/poppler-22.01.0/COPYING3 %{buildroot}/usr/share/package-licenses/poppler/8624bcdae55baeef00cd11d5dfcfa60f68710a02
-cp %{_builddir}/poppler-22.01.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/poppler/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/poppler-22.04.0/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/poppler-22.04.0/COPYING3 %{buildroot}/usr/share/package-licenses/poppler/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/poppler-22.04.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/poppler/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build-avx2
 %make_install_v3  || :
 popd
@@ -380,7 +380,6 @@ popd
 /usr/include/poppler/splash/SplashXPath.h
 /usr/include/poppler/splash/SplashXPathScanner.h
 /usr/lib64/libpoppler-qt5.so.1
-/usr/lib64/libpoppler-qt5.so.1.30.0
 /usr/lib64/libpoppler.so
 /usr/lib64/pkgconfig/poppler.pc
 
@@ -393,9 +392,10 @@ popd
 /usr/lib64/libpoppler-cpp.so.0
 /usr/lib64/libpoppler-cpp.so.0.9.0
 /usr/lib64/libpoppler-glib.so.8
-/usr/lib64/libpoppler-glib.so.8.22.0
-/usr/lib64/libpoppler.so.117
-/usr/lib64/libpoppler.so.117.0.0
+/usr/lib64/libpoppler-glib.so.8.23.0
+/usr/lib64/libpoppler-qt5.so.1.31.0
+/usr/lib64/libpoppler.so.120
+/usr/lib64/libpoppler.so.120.0.0
 /usr/share/clear/optimized-elf/lib*
 
 %files license
