@@ -6,7 +6,7 @@
 #
 Name     : poppler
 Version  : 22.04.0
-Release  : 74
+Release  : 75
 URL      : https://poppler.freedesktop.org/poppler-22.04.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-22.04.0.tar.xz
 Source1  : https://poppler.freedesktop.org/poppler-22.04.0.tar.xz.sig
@@ -137,7 +137,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1650422125
+export SOURCE_DATE_EPOCH=1650436235
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -170,7 +170,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1650422125
+export SOURCE_DATE_EPOCH=1650436235
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp %{_builddir}/poppler-22.04.0/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
@@ -380,6 +380,7 @@ popd
 /usr/include/poppler/splash/SplashXPath.h
 /usr/include/poppler/splash/SplashXPathScanner.h
 /usr/lib64/libpoppler-qt5.so.1
+/usr/lib64/libpoppler-qt5.so.1.31.0
 /usr/lib64/libpoppler.so
 /usr/lib64/pkgconfig/poppler.pc
 
@@ -393,7 +394,6 @@ popd
 /usr/lib64/libpoppler-cpp.so.0.9.0
 /usr/lib64/libpoppler-glib.so.8
 /usr/lib64/libpoppler-glib.so.8.23.0
-/usr/lib64/libpoppler-qt5.so.1.31.0
 /usr/lib64/libpoppler.so.120
 /usr/lib64/libpoppler.so.120.0.0
 /usr/share/clear/optimized-elf/lib*
