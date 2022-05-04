@@ -9,16 +9,15 @@
 #  /usr/include/poppler/cpp/*
 #  /usr/include/poppler/glib/*
 #  /usr/include/poppler/qt5/*
-/usr/include/poppler/AnnotStampImageHelper.h
-/usr/include/poppler/FDPDFDocBuilder.h
-/usr/include/poppler/FILECacheLoader.h
-/usr/include/poppler/BBoxOutputDev.h
-/usr/include/poppler/JSInfo.h
-/usr/include/poppler/poppler_private_export.h
 /usr/include/poppler/Annot.h
+/usr/include/poppler/AnnotStampImageHelper.h
 /usr/include/poppler/Array.h
+/usr/include/poppler/BBoxOutputDev.h
 /usr/include/poppler/CMap.h
 /usr/include/poppler/CachedFile.h
+/usr/include/poppler/CairoFontEngine.h
+/usr/include/poppler/CairoOutputDev.h
+/usr/include/poppler/CairoRescaleBox.h
 /usr/include/poppler/Catalog.h
 /usr/include/poppler/CertificateInfo.h
 /usr/include/poppler/CharCodeToUnicode.h
@@ -30,6 +29,8 @@
 /usr/include/poppler/Dict.h
 /usr/include/poppler/Error.h
 /usr/include/poppler/ErrorCodes.h
+/usr/include/poppler/FDPDFDocBuilder.h
+/usr/include/poppler/FILECacheLoader.h
 /usr/include/poppler/FileSpec.h
 /usr/include/poppler/FontEncodingTables.h
 /usr/include/poppler/FontInfo.h
@@ -44,6 +45,7 @@
 /usr/include/poppler/JArithmeticDecoder.h
 /usr/include/poppler/JBIG2Stream.h
 /usr/include/poppler/JPXStream.h
+/usr/include/poppler/JSInfo.h
 /usr/include/poppler/Lexer.h
 /usr/include/poppler/Linearization.h
 /usr/include/poppler/Link.h
@@ -111,6 +113,7 @@
 /usr/include/poppler/goo/grandom.h
 /usr/include/poppler/goo/gstrtod.h
 /usr/include/poppler/poppler-config.h
+/usr/include/poppler/poppler_private_export.h
 /usr/include/poppler/splash/Splash.h
 /usr/include/poppler/splash/SplashBitmap.h
 /usr/include/poppler/splash/SplashClip.h
