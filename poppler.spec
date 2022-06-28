@@ -6,7 +6,7 @@
 #
 Name     : poppler
 Version  : 22.06.0
-Release  : 78
+Release  : 79
 URL      : https://poppler.freedesktop.org/poppler-22.06.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-22.06.0.tar.xz
 Source1  : https://poppler.freedesktop.org/poppler-22.06.0.tar.xz.sig
@@ -137,7 +137,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654185394
+export SOURCE_DATE_EPOCH=1656427579
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -170,7 +170,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1654185394
+export SOURCE_DATE_EPOCH=1656427579
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp %{_builddir}/poppler-22.06.0/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
@@ -182,7 +182,7 @@ popd
 pushd clr-build
 %make_install
 popd
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -249,6 +249,10 @@ popd
 /usr/include/poppler/qt5/poppler-page-transition.h
 /usr/include/poppler/qt5/poppler-qt5.h
 /usr/include/poppler/qt5/poppler-version.h
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-cpp.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-glib.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-qt5.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler.so
 /usr/lib64/libpoppler-cpp.so
 /usr/lib64/libpoppler-glib.so
 /usr/lib64/libpoppler-qt5.so
@@ -390,13 +394,20 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-cpp.so.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-cpp.so.0.10.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-glib.so.8
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-glib.so.8.23.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-qt5.so.1
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-qt5.so.1.31.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler.so.122
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler.so.122.0.0
 /usr/lib64/libpoppler-cpp.so.0
 /usr/lib64/libpoppler-cpp.so.0.10.0
 /usr/lib64/libpoppler-glib.so.8
 /usr/lib64/libpoppler-glib.so.8.23.0
 /usr/lib64/libpoppler.so.122
 /usr/lib64/libpoppler.so.122.0.0
-/usr/share/clear/optimized-elf/lib*
 
 %files license
 %defattr(0644,root,root,0755)
