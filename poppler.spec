@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
 Name     : poppler
-Version  : 22.09.0
-Release  : 89
-URL      : https://poppler.freedesktop.org/poppler-22.09.0.tar.xz
-Source0  : https://poppler.freedesktop.org/poppler-22.09.0.tar.xz
-Source1  : https://poppler.freedesktop.org/poppler-22.09.0.tar.xz.sig
+Version  : 22.10.0
+Release  : 90
+URL      : https://poppler.freedesktop.org/poppler-22.10.0.tar.xz
+Source0  : https://poppler.freedesktop.org/poppler-22.10.0.tar.xz
+Source1  : https://poppler.freedesktop.org/poppler-22.10.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0
@@ -129,15 +129,15 @@ man components for the poppler package.
 
 
 %prep
-%setup -q -n poppler-22.09.0
-cd %{_builddir}/poppler-22.09.0
+%setup -q -n poppler-22.10.0
+cd %{_builddir}/poppler-22.10.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662076810
+export SOURCE_DATE_EPOCH=1664829475
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -148,7 +148,9 @@ export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=a
 export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
 export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
 export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -ffat-lto-objects -flto=auto -fno-semantic-interposition -fstack-protector-strong -fzero-call-used-regs=used -mprefer-vector-width=256 "
-%cmake .. -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_UTILS=ON -DENABLE_LIBOPENJPEG=none
+%cmake .. -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
+-DENABLE_UTILS=ON \
+-DENABLE_LIBOPENJPEG=none
 make  %{?_smp_mflags}
 popd
 mkdir -p clr-build-avx2
@@ -165,12 +167,14 @@ export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
-%cmake .. -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_UTILS=ON -DENABLE_LIBOPENJPEG=none
+%cmake .. -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
+-DENABLE_UTILS=ON \
+-DENABLE_LIBOPENJPEG=none
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1662076810
+export SOURCE_DATE_EPOCH=1664829475
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp %{_builddir}/poppler-%{version}/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
@@ -400,14 +404,14 @@ popd
 /usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-cpp.so.0.11.0
 /usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-glib.so.8
 /usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-glib.so.8.24.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler.so.124
-/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler.so.124.0.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler.so.125
+/usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler.so.125.0.0
 /usr/lib64/libpoppler-cpp.so.0
 /usr/lib64/libpoppler-cpp.so.0.11.0
 /usr/lib64/libpoppler-glib.so.8
 /usr/lib64/libpoppler-glib.so.8.24.0
-/usr/lib64/libpoppler.so.124
-/usr/lib64/libpoppler.so.124.0.0
+/usr/lib64/libpoppler.so.125
+/usr/lib64/libpoppler.so.125.0.0
 
 %files license
 %defattr(0644,root,root,0755)
