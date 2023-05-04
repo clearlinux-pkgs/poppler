@@ -7,7 +7,7 @@
 #
 Name     : poppler
 Version  : 23.05.0
-Release  : 100
+Release  : 101
 URL      : https://poppler.freedesktop.org/poppler-23.05.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-23.05.0.tar.xz
 Source1  : https://poppler.freedesktop.org/poppler-23.05.0.tar.xz.sig
@@ -129,7 +129,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683135992
+export SOURCE_DATE_EPOCH=1683222858
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -166,7 +166,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1683135992
+export SOURCE_DATE_EPOCH=1683222858
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp %{_builddir}/poppler-%{version}/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
