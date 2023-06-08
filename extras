@@ -2,9 +2,12 @@
 /usr/lib64/glibc-hwcaps/x86-64-v3/libpoppler-qt5.so.1.31.0
 /usr/lib64/libpoppler-qt5.so.1
 /usr/lib64/libpoppler-qt5.so.1.31.0
+/usr/lib64/libpoppler-qt5.so.1.32.0
 /usr/lib64/libpoppler.so
 /usr/lib64/pkgconfig/poppler-splash.pc
 /usr/lib64/pkgconfig/poppler.pc
+/V3/usr/lib64/libpoppler-qt5.so.1.32.0
+
 
 
 # This file should contain all headers, except:
