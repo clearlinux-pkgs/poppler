@@ -7,7 +7,7 @@
 #
 Name     : poppler
 Version  : 23.06.0
-Release  : 104
+Release  : 105
 URL      : https://poppler.freedesktop.org/poppler-23.06.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-23.06.0.tar.xz
 Source1  : https://poppler.freedesktop.org/poppler-23.06.0.tar.xz.sig
