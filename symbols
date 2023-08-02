@@ -334,8 +334,15 @@ libpoppler-glib.so.8:poppler_attachment_save_to_fd
 libpoppler-glib.so.8:poppler_backend_get_type
 libpoppler-glib.so.8:poppler_certificate_info_copy
 libpoppler-glib.so.8:poppler_certificate_info_free
+libpoppler-glib.so.8:poppler_certificate_info_get_expiration_time
 libpoppler-glib.so.8:poppler_certificate_info_get_id
+libpoppler-glib.so.8:poppler_certificate_info_get_issuance_time
+libpoppler-glib.so.8:poppler_certificate_info_get_issuer_common_name
+libpoppler-glib.so.8:poppler_certificate_info_get_issuer_email
+libpoppler-glib.so.8:poppler_certificate_info_get_issuer_organization
 libpoppler-glib.so.8:poppler_certificate_info_get_subject_common_name
+libpoppler-glib.so.8:poppler_certificate_info_get_subject_email
+libpoppler-glib.so.8:poppler_certificate_info_get_subject_organization
 libpoppler-glib.so.8:poppler_certificate_info_get_type
 libpoppler-glib.so.8:poppler_certificate_status_get_type
 libpoppler-glib.so.8:poppler_color_copy
@@ -615,6 +622,7 @@ libpoppler-glib.so.8:poppler_set_nss_dir
 libpoppler-glib.so.8:poppler_set_nss_password_callback
 libpoppler-glib.so.8:poppler_signature_info_copy
 libpoppler-glib.so.8:poppler_signature_info_free
+libpoppler-glib.so.8:poppler_signature_info_get_certificate_info
 libpoppler-glib.so.8:poppler_signature_info_get_certificate_status
 libpoppler-glib.so.8:poppler_signature_info_get_local_signing_time
 libpoppler-glib.so.8:poppler_signature_info_get_signature_status
@@ -757,6 +765,7 @@ libpoppler-glib.so.8:poppler_text_span_is_bold_font
 libpoppler-glib.so.8:poppler_text_span_is_fixed_width_font
 libpoppler-glib.so.8:poppler_text_span_is_serif_font
 libpoppler-glib.so.8:poppler_viewer_preferences_get_type
+libpoppler.so.130:POPPLER_130
 libpoppler.so.130:_Z10utf8ToUCS4PKcPPj
 libpoppler.so.130:_Z11utf16ToUtf8PKtPcii
 libpoppler.so.130:_Z11utf16ToUtf8PKtPi

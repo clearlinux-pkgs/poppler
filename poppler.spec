@@ -6,11 +6,11 @@
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
 Name     : poppler
-Version  : 23.07.0
-Release  : 106
-URL      : https://poppler.freedesktop.org/poppler-23.07.0.tar.xz
-Source0  : https://poppler.freedesktop.org/poppler-23.07.0.tar.xz
-Source1  : https://poppler.freedesktop.org/poppler-23.07.0.tar.xz.sig
+Version  : 23.08.0
+Release  : 107
+URL      : https://poppler.freedesktop.org/poppler-23.08.0.tar.xz
+Source0  : https://poppler.freedesktop.org/poppler-23.08.0.tar.xz
+Source1  : https://poppler.freedesktop.org/poppler-23.08.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0
@@ -122,15 +122,15 @@ man components for the poppler package.
 
 
 %prep
-%setup -q -n poppler-23.07.0
-cd %{_builddir}/poppler-23.07.0
+%setup -q -n poppler-23.08.0
+cd %{_builddir}/poppler-23.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688570554
+export SOURCE_DATE_EPOCH=1690987223
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -167,7 +167,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1688570554
+export SOURCE_DATE_EPOCH=1690987223
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp %{_builddir}/poppler-%{version}/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
@@ -397,12 +397,12 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /V3/usr/lib64/libpoppler-cpp.so.0.11.0
-/V3/usr/lib64/libpoppler-glib.so.8.25.0
+/V3/usr/lib64/libpoppler-glib.so.8.26.0
 /V3/usr/lib64/libpoppler.so.130.0.0
 /usr/lib64/libpoppler-cpp.so.0
 /usr/lib64/libpoppler-cpp.so.0.11.0
 /usr/lib64/libpoppler-glib.so.8
-/usr/lib64/libpoppler-glib.so.8.25.0
+/usr/lib64/libpoppler-glib.so.8.26.0
 /usr/lib64/libpoppler.so.130
 /usr/lib64/libpoppler.so.130.0.0
 
