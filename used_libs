@@ -1,7 +1,4 @@
 ld-linux-x86-64.so.2
-libQt5Core.so.5
-libQt5Gui.so.5
-libQt5Xml.so.5
 libc.so.6
 libcairo.so.2
 libcurl.so.4

@@ -7,7 +7,7 @@
 #
 Name     : poppler
 Version  : 23.09.0
-Release  : 108
+Release  : 109
 URL      : https://poppler.freedesktop.org/poppler-23.09.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-23.09.0.tar.xz
 Source1  : https://poppler.freedesktop.org/poppler-23.09.0.tar.xz.sig
@@ -130,7 +130,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1694185710
+export SOURCE_DATE_EPOCH=1695131846
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -167,7 +167,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1694185710
+export SOURCE_DATE_EPOCH=1695131846
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp %{_builddir}/poppler-%{version}/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
@@ -267,6 +267,7 @@ popd
 
 %files extras
 %defattr(-,root,root,-)
+/V3/usr/lib64/libpoppler-qt5.so.1.33.0
 /usr/include/poppler/Annot.h
 /usr/include/poppler/AnnotStampImageHelper.h
 /usr/include/poppler/Array.h
@@ -389,6 +390,7 @@ popd
 /usr/include/poppler/splash/SplashXPath.h
 /usr/include/poppler/splash/SplashXPathScanner.h
 /usr/lib64/libpoppler-qt5.so.1
+/usr/lib64/libpoppler-qt5.so.1.33.0
 /usr/lib64/libpoppler.so
 /usr/lib64/pkgconfig/poppler.pc
 
@@ -396,13 +398,11 @@ popd
 %defattr(-,root,root,-)
 /V3/usr/lib64/libpoppler-cpp.so.0.11.0
 /V3/usr/lib64/libpoppler-glib.so.8.26.0
-/V3/usr/lib64/libpoppler-qt5.so.1.33.0
 /V3/usr/lib64/libpoppler.so.131.0.0
 /usr/lib64/libpoppler-cpp.so.0
 /usr/lib64/libpoppler-cpp.so.0.11.0
 /usr/lib64/libpoppler-glib.so.8
 /usr/lib64/libpoppler-glib.so.8.26.0
-/usr/lib64/libpoppler-qt5.so.1.33.0
 /usr/lib64/libpoppler.so.131
 /usr/lib64/libpoppler.so.131.0.0
 
