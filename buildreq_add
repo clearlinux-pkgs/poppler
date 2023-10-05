@@ -5,3 +5,4 @@ libjpeg-turbo-dev
 qtbase-extras
 buildreq-kde
 glibc-bin
+buildreq-qt6

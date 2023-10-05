@@ -6,11 +6,11 @@
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
 Name     : poppler
-Version  : 23.09.0
-Release  : 109
-URL      : https://poppler.freedesktop.org/poppler-23.09.0.tar.xz
-Source0  : https://poppler.freedesktop.org/poppler-23.09.0.tar.xz
-Source1  : https://poppler.freedesktop.org/poppler-23.09.0.tar.xz.sig
+Version  : 23.10.0
+Release  : 110
+URL      : https://poppler.freedesktop.org/poppler-23.10.0.tar.xz
+Source0  : https://poppler.freedesktop.org/poppler-23.10.0.tar.xz
+Source1  : https://poppler.freedesktop.org/poppler-23.10.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0
@@ -22,11 +22,13 @@ Requires: poppler-man = %{version}-%{release}
 BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : buildreq-qt6
 BuildRequires : curl-dev
 BuildRequires : freetype-dev
 BuildRequires : glibc-bin
 BuildRequires : glibc-dev
 BuildRequires : gpgme-dev
+BuildRequires : gpgme-extras
 BuildRequires : gtk-doc-data
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : libpng-dev
@@ -42,7 +44,6 @@ BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(lcms2)
 BuildRequires : pkgconfig(nss)
 BuildRequires : python3
-BuildRequires : qtbase-dev
 BuildRequires : qtbase-extras
 BuildRequires : tiff-dev
 BuildRequires : zlib-dev
@@ -122,25 +123,31 @@ man components for the poppler package.
 
 
 %prep
-%setup -q -n poppler-23.09.0
-cd %{_builddir}/poppler-23.09.0
+%setup -q -n poppler-23.10.0
+cd %{_builddir}/poppler-23.10.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1695131846
+export SOURCE_DATE_EPOCH=1696519888
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-export FCFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-export FFLAGS="$FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS"
+CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS"
+FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
+FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
+ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
+LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 %cmake .. -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
 -DENABLE_UTILS=ON \
 -DENABLE_LIBOPENJPEG=none
@@ -152,14 +159,20 @@ export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Ofast -Wl,-z,x86-64-v3 -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
-export FCFLAGS="$FFLAGS -O3 -Ofast -Wl,-z,x86-64-v3 -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
-export FFLAGS="$FFLAGS -O3 -Ofast -Wl,-z,x86-64-v3 -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
-export CXXFLAGS="$CXXFLAGS -O3 -Ofast -Wl,-z,x86-64-v3 -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
-export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
-export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
-export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
-export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS"
+CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS"
+FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
+FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
+ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
+LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
+CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake .. -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
 -DENABLE_UTILS=ON \
 -DENABLE_LIBOPENJPEG=none
@@ -167,7 +180,21 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1695131846
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CLEAR_INTERMEDIATE_CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -O3 -Ofast -falign-functions=32 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -fno-semantic-interposition -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS"
+CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS"
+FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
+FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
+ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
+LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
+export SOURCE_DATE_EPOCH=1696519888
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp %{_builddir}/poppler-%{version}/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
@@ -258,16 +285,28 @@ popd
 /usr/include/poppler/qt5/poppler-page-transition.h
 /usr/include/poppler/qt5/poppler-qt5.h
 /usr/include/poppler/qt5/poppler-version.h
+/usr/include/poppler/qt6/poppler-annotation.h
+/usr/include/poppler/qt6/poppler-export.h
+/usr/include/poppler/qt6/poppler-form.h
+/usr/include/poppler/qt6/poppler-link.h
+/usr/include/poppler/qt6/poppler-media.h
+/usr/include/poppler/qt6/poppler-optcontent.h
+/usr/include/poppler/qt6/poppler-page-transition.h
+/usr/include/poppler/qt6/poppler-qt6.h
+/usr/include/poppler/qt6/poppler-version.h
 /usr/lib64/libpoppler-cpp.so
 /usr/lib64/libpoppler-glib.so
 /usr/lib64/libpoppler-qt5.so
+/usr/lib64/libpoppler-qt6.so
 /usr/lib64/pkgconfig/poppler-cpp.pc
 /usr/lib64/pkgconfig/poppler-glib.pc
 /usr/lib64/pkgconfig/poppler-qt5.pc
+/usr/lib64/pkgconfig/poppler-qt6.pc
 
 %files extras
 %defattr(-,root,root,-)
 /V3/usr/lib64/libpoppler-qt5.so.1.33.0
+/V3/usr/lib64/libpoppler-qt6.so.3.4.0
 /usr/include/poppler/Annot.h
 /usr/include/poppler/AnnotStampImageHelper.h
 /usr/include/poppler/Array.h
@@ -391,6 +430,7 @@ popd
 /usr/include/poppler/splash/SplashXPathScanner.h
 /usr/lib64/libpoppler-qt5.so.1
 /usr/lib64/libpoppler-qt5.so.1.33.0
+/usr/lib64/libpoppler-qt6.so.3.4.0
 /usr/lib64/libpoppler.so
 /usr/lib64/pkgconfig/poppler.pc
 
@@ -398,13 +438,14 @@ popd
 %defattr(-,root,root,-)
 /V3/usr/lib64/libpoppler-cpp.so.0.11.0
 /V3/usr/lib64/libpoppler-glib.so.8.26.0
-/V3/usr/lib64/libpoppler.so.131.0.0
+/V3/usr/lib64/libpoppler.so.132.0.0
 /usr/lib64/libpoppler-cpp.so.0
 /usr/lib64/libpoppler-cpp.so.0.11.0
 /usr/lib64/libpoppler-glib.so.8
 /usr/lib64/libpoppler-glib.so.8.26.0
-/usr/lib64/libpoppler.so.131
-/usr/lib64/libpoppler.so.131.0.0
+/usr/lib64/libpoppler-qt6.so.3
+/usr/lib64/libpoppler.so.132
+/usr/lib64/libpoppler.so.132.0.0
 
 %files license
 %defattr(0644,root,root,0755)
