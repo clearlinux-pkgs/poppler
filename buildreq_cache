@@ -1,5 +1,6 @@
-24.03.0
+24.04.0
 curl-dev
 gpgme-dev
 gpgme-extras
+qtbase-dev
 tiff-dev
