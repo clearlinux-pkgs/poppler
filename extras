@@ -58,6 +58,7 @@
 /usr/include/poppler/GfxState.h
 /usr/include/poppler/GfxState_helpers.h
 /usr/include/poppler/GlobalParams.h
+/usr/include/poppler/HashAlgorithm.h
 /usr/include/poppler/Hints.h
 /usr/include/poppler/JArithmeticDecoder.h
 /usr/include/poppler/JBIG2Stream.h
@@ -89,6 +90,7 @@
 /usr/include/poppler/ProfileData.h
 /usr/include/poppler/Rendition.h
 /usr/include/poppler/SecurityHandler.h
+/usr/include/poppler/SignatureInfo.h
 /usr/include/poppler/Sound.h
 /usr/include/poppler/SplashOutputDev.h
 /usr/include/poppler/StdinCachedFile.h

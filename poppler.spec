@@ -9,7 +9,7 @@
 #
 Name     : poppler
 Version  : 24.05.0
-Release  : 119
+Release  : 120
 URL      : https://poppler.freedesktop.org/poppler-24.05.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-24.05.0.tar.xz
 Source1  : https://poppler.freedesktop.org/poppler-24.05.0.tar.xz.sig
@@ -152,7 +152,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1714668860
+export SOURCE_DATE_EPOCH=1714683883
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -217,7 +217,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1714668860
+export SOURCE_DATE_EPOCH=1714683883
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp %{_builddir}/poppler-%{version}/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
@@ -274,8 +274,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/poppler/HashAlgorithm.h
-/usr/include/poppler/SignatureInfo.h
 /usr/include/poppler/cpp/poppler-destination.h
 /usr/include/poppler/cpp/poppler-document.h
 /usr/include/poppler/cpp/poppler-embedded-file.h
@@ -367,6 +365,7 @@ popd
 /usr/include/poppler/GfxState.h
 /usr/include/poppler/GfxState_helpers.h
 /usr/include/poppler/GlobalParams.h
+/usr/include/poppler/HashAlgorithm.h
 /usr/include/poppler/Hints.h
 /usr/include/poppler/JArithmeticDecoder.h
 /usr/include/poppler/JBIG2Stream.h
@@ -398,6 +397,7 @@ popd
 /usr/include/poppler/ProfileData.h
 /usr/include/poppler/Rendition.h
 /usr/include/poppler/SecurityHandler.h
+/usr/include/poppler/SignatureInfo.h
 /usr/include/poppler/Sound.h
 /usr/include/poppler/SplashOutputDev.h
 /usr/include/poppler/Stream-CCITT.h
