@@ -8,11 +8,11 @@
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
 Name     : poppler
-Version  : 24.08.0
-Release  : 124
-URL      : https://poppler.freedesktop.org/poppler-24.08.0.tar.xz
-Source0  : https://poppler.freedesktop.org/poppler-24.08.0.tar.xz
-Source1  : https://poppler.freedesktop.org/poppler-24.08.0.tar.xz.sig
+Version  : 24.09.0
+Release  : 125
+URL      : https://poppler.freedesktop.org/poppler-24.09.0.tar.xz
+Source0  : https://poppler.freedesktop.org/poppler-24.09.0.tar.xz
+Source1  : https://poppler.freedesktop.org/poppler-24.09.0.tar.xz.sig
 Source2  : 3A6A4DB839EAA6D7.pkey
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -144,10 +144,10 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) 3A6A4DB839EAA6D7' gpg.status
-%setup -q -n poppler-24.08.0
-cd %{_builddir}/poppler-24.08.0
+%setup -q -n poppler-24.09.0
+cd %{_builddir}/poppler-24.09.0
 pushd ..
-cp -a poppler-24.08.0 buildavx2
+cp -a poppler-24.09.0 buildavx2
 popd
 
 %build
@@ -155,7 +155,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1722635442
+export SOURCE_DATE_EPOCH=1725546345
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -222,7 +222,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1722635442
+export SOURCE_DATE_EPOCH=1725546345
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp %{_builddir}/poppler-%{version}/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
@@ -473,15 +473,15 @@ popd
 /V3/usr/lib64/libpoppler-cpp.so.1.0.0
 /V3/usr/lib64/libpoppler-glib.so.8.26.0
 /V3/usr/lib64/libpoppler-qt6.so.3.7.0
-/V3/usr/lib64/libpoppler.so.140.0.0
+/V3/usr/lib64/libpoppler.so.141.0.0
 /usr/lib64/libpoppler-cpp.so.1
 /usr/lib64/libpoppler-cpp.so.1.0.0
 /usr/lib64/libpoppler-glib.so.8
 /usr/lib64/libpoppler-glib.so.8.26.0
 /usr/lib64/libpoppler-qt6.so.3
 /usr/lib64/libpoppler-qt6.so.3.7.0
-/usr/lib64/libpoppler.so.140
-/usr/lib64/libpoppler.so.140.0.0
+/usr/lib64/libpoppler.so.141
+/usr/lib64/libpoppler.so.141.0.0
 
 %files license
 %defattr(0644,root,root,0755)
