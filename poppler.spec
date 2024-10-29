@@ -9,7 +9,7 @@
 #
 Name     : poppler
 Version  : 24.09.0
-Release  : 125
+Release  : 126
 URL      : https://poppler.freedesktop.org/poppler-24.09.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-24.09.0.tar.xz
 Source1  : https://poppler.freedesktop.org/poppler-24.09.0.tar.xz.sig
