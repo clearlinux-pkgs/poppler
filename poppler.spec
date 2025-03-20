@@ -8,11 +8,11 @@
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
 Name     : poppler
-Version  : 25.02.0
-Release  : 127
-URL      : https://poppler.freedesktop.org/poppler-25.02.0.tar.xz
-Source0  : https://poppler.freedesktop.org/poppler-25.02.0.tar.xz
-Source1  : https://poppler.freedesktop.org/poppler-25.02.0.tar.xz.sig
+Version  : 25.03.0
+Release  : 128
+URL      : https://poppler.freedesktop.org/poppler-25.03.0.tar.xz
+Source0  : https://poppler.freedesktop.org/poppler-25.03.0.tar.xz
+Source1  : https://poppler.freedesktop.org/poppler-25.03.0.tar.xz.sig
 Source2  : 3A6A4DB839EAA6D7.pkey
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -58,12 +58,10 @@ BuildRequires : zlib-dev
 %define debug_package %{nil}
 
 %description
-Xpdf
-====
-version 3.03
-2011-aug-15
-The Xpdf software and documentation are
-copyright 1996-2011, 2022 Glyph & Cog, LLC.
+Poppler, a PDF rendering library
+================================
+This is Poppler, a library for rendering PDF files, and examining or
+modifying their structure.  Poppler originally came from the XPDF
 
 %package bin
 Summary: bin components for the poppler package.
@@ -144,10 +142,10 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) 3A6A4DB839EAA6D7' gpg.status
-%setup -q -n poppler-25.02.0
-cd %{_builddir}/poppler-25.02.0
+%setup -q -n poppler-25.03.0
+cd %{_builddir}/poppler-25.03.0
 pushd ..
-cp -a poppler-25.02.0 buildavx2
+cp -a poppler-25.03.0 buildavx2
 popd
 
 %build
@@ -155,7 +153,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1740423865
+export SOURCE_DATE_EPOCH=1742451940
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -222,7 +220,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1740423865
+export SOURCE_DATE_EPOCH=1742451940
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/poppler
 cp %{_builddir}/poppler-%{version}/COPYING %{buildroot}/usr/share/package-licenses/poppler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
@@ -341,7 +339,6 @@ popd
 
 %files extras
 %defattr(-,root,root,-)
-/V3/usr/lib64/libpoppler-qt5.so.1.37.0
 /usr/include/poppler/Annot.h
 /usr/include/poppler/AnnotStampImageHelper.h
 /usr/include/poppler/Array.h
@@ -440,7 +437,6 @@ popd
 /usr/include/poppler/splash/SplashPattern.h
 /usr/include/poppler/splash/SplashTypes.h
 /usr/lib64/libpoppler-qt5.so.1
-/usr/lib64/libpoppler-qt5.so.1.37.0
 /usr/lib64/libpoppler.so
 /usr/lib64/pkgconfig/poppler.pc
 
@@ -448,16 +444,18 @@ popd
 %defattr(-,root,root,-)
 /V3/usr/lib64/libpoppler-cpp.so.2.0.0
 /V3/usr/lib64/libpoppler-glib.so.8.29.0
-/V3/usr/lib64/libpoppler-qt6.so.3.9.0
-/V3/usr/lib64/libpoppler.so.146.0.0
+/V3/usr/lib64/libpoppler-qt5.so.1.38.0
+/V3/usr/lib64/libpoppler-qt6.so.3.10.0
+/V3/usr/lib64/libpoppler.so.147.0.0
 /usr/lib64/libpoppler-cpp.so.2
 /usr/lib64/libpoppler-cpp.so.2.0.0
 /usr/lib64/libpoppler-glib.so.8
 /usr/lib64/libpoppler-glib.so.8.29.0
+/usr/lib64/libpoppler-qt5.so.1.38.0
 /usr/lib64/libpoppler-qt6.so.3
-/usr/lib64/libpoppler-qt6.so.3.9.0
-/usr/lib64/libpoppler.so.146
-/usr/lib64/libpoppler.so.146.0.0
+/usr/lib64/libpoppler-qt6.so.3.10.0
+/usr/lib64/libpoppler.so.147
+/usr/lib64/libpoppler.so.147.0.0
 
 %files license
 %defattr(0644,root,root,0755)
